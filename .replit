@@ -1,0 +1,10 @@
+run = "PHP_CLI_SERVER_WORKERS=50 php -S 0.0.0.0:8000 -t ."
+entrypoint = "message.php"
+language = "php"
+
+[nix]
+channel = "unstable"
+
+[[ports]]
+localPort = 8000
+externalPort = 80
