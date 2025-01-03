@@ -27,7 +27,7 @@ $fullPrompt = $customPrompt . $message;
 $primaryApiUrl = 'https://www.niroblr.cloud/api/gpt4?prompt=' . urlencode($fullPrompt);
 
 // Backup API URL (with q=hi, uid=1, and imageUrl parameters)
-$backupApiUrl = 'https://kaiz-apis.gleeze.com/api/gpt-4o-pro?q=' . urlencode($prompt) . '&uid=1&imageUrl='; // Added q=hi, uid=1&imageUrl=
+$backupApiUrl = 'https://kaiz-apis.gleeze.com/api/gpt-4o-pro?q=' . urlencode($message) . '&uid=1&imageUrl=';
 
 // Function to call the API
 function callApi($url) {
@@ -44,6 +44,7 @@ $responseData = callApi($primaryApiUrl);
 // If primary API fails, fall back to backup API
 if (!$responseData) {
     error_log("Primary API failed, falling back to backup API.");
+    // Ensure the backup API URL is correct and includes all necessary parameters
     $responseData = callApi($backupApiUrl);
 }
 
